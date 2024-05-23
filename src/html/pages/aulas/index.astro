@@ -1,0 +1,350 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index";
+---
+
+<!doctype html>
+<html lang="en">
+
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta-02, .resposta-correta-03 {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta-02, .resposta-incorreta-03 {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+  <!--end::Head-->
+
+  <!--begin::Body-->
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      function verificarRespostas() {
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+
+        let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+        let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+        let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+        let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+        respostaCorreta02[0].style = "display: none";
+        respostaIncorreta02[0].style = "display: none";
+        respostaCorreta03[0].style = "display: none";
+        respostaIncorreta03[0].style = "display: none";
+
+        if (resposta02 == "14") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03 == "5") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>CONHECENDO GRÁFICOS</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_01/conhecendo_os_graficos.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Antes de entrar no mundo dos gráficos, devemos entender o mundo por trás daquilo que está construído, os dados. A ciência por trás dos dados se chama estatística que refere-se ao conjunto de ferramentas para obter, resumir e extrair informações relevantes de dados; encontrar e avaliar padrões mostrados pelos mesmos; planejar levantamentos de dados ou delinear experimentos e comunicar resultados de pesquisas quantitativas. Sua importância reside no auxílio ao processo de pesquisa, que permeia todas as áreas do conhecimento que lidam com observações empíricas. Assim, podemos dizer que a Estatística é a ciência do significado e uso dos dados.
+          </p>
+
+          <p>
+            Tais dados são informações, fatos ou registros que podem ser coletados, armazenados e analisados. Eles representam observações ou valores de variáveis e são a matéria-prima para a obtenção de conhecimento e insights. Dados podem ser encontrados em diversas formas, como números, textos, imagens, vídeos, entre outros. Os dados podem ser classificados em duas categorias principais:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Dados Quantitativos:</strong> São dados expressos em termos numéricos e geralmente são mensuráveis. Exemplos incluem idade, altura, temperatura, quantidade de vendas, etc.
+            </li>
+            <li>
+              <strong>Dados Qualitativos:</strong> São dados que descrevem qualidades ou características e não podem ser facilmente medidas numericamente. Exemplos incluem cores, sentimentos, opiniões, etc.
+            </li>
+          </ul>
+
+          <p>
+            Os dados podem ser coletados de fontes diversas, como pesquisas, sensores, registros administrativos, entrevistas, observações, entre outros. Uma vez coletados, os dados podem passar por processos de organização, análise e interpretação para extrair informações significativas.
+          </p>
+
+          <p>
+            Uma das formas de organizar esses dados para extrair informações são os gráficos e neste curso vão ser apresentados três tipos de gráficos.
+          </p>
+
+          <ol>
+            <li>
+              <strong>Em barra:</strong> Também conhecidos como gráficos de colunas, eles utilizam barras verticais (para cima) ou horizontais (para o lado)  para representar dados. Cada barra geralmente representa uma categoria e a altura ou comprimento da barra indica a quantidade associada a essa categoria.
+            </li>
+            <li>
+              <strong>Gráficos em Linha:</strong> Esses gráficos conectam pontos de dados com linhas, mostrando a relação e a tendência (subir ou descer) entre os pontos ao longo de um eixo. São frequentemente usados para representar dados que mudam ao longo do tempo.
+            </li>
+            <li>
+              <strong>Gráficos em Pizza:</strong> Também chamados de gráficos de setor, esses gráficos dividem um círculo em setores para representar diferentes partes de um todo. Cada setor representa uma categoria e a área do setor é proporcional à quantidade de dados que representa.
+            </li>
+          </ol>
+          <br>
+          <iframe
+            width="1024"
+            height="306"
+            src="https://www.youtube.com/embed/9rSTsFQH9oE"
+            title="TIPOS DE GRÁFICOS - GRÁFICO DE COLUNAS, BARRAS, SEGMENTOS E SETORES @professoraangelamatematica"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_01/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            O objetivo da aula, além de transmitir o conhecimento correto a respeito dos       conceitos de gráficos tipos de gráficos e dados, é fazer com que você consiga analisar um gráfico, entender seu funcionamento e reproduzir um ao se deparar com situações que necessitam de tal habilidade.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+            <h2>AQUECIMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_01/aquecimento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Nesse momento, vamos colocar em prática tudo aquilo que aprendemos ao decorrer da aula e para isso, vamos fazer uma série de atividades. Primeiro de tudo vamos fazer uma coleta de dados pessoais, mas antes devemos entender que todo o gráfico precisa de um título para guiar a coleta.
+            </p>
+            <p>
+              Então, vamos coletar os dados com o seguinte tema : Roupas (Blusa, shorts e sapatos) pense rápido e anote quantas peças você tem de cada uma que foi citada. Após anotar responda às seguintes questões :
+            </p>
+
+            <ol>
+              <li>
+                Para que acham que serve essa coleta?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_01/aquecimento_01.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Como organizou?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_01/aquecimento_02.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                É possível saber qual peça tem mais ?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_01/aquecimento_03.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Podemos saber alguma outra informação?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_01/aquecimento_04.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_01/enunciado_exercicio.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Uma professora resolveu investigar qual sobremesa seus alunos mais gostam. Temos aqui o gráfico de barras que a turma usou para representar o resultado. Nele,percebeu que 5 crianças gostam de balas, 4 de sorvete e 5 de chocolate .Com base nisso,responda às alternativas abaixo.
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="margin-bottom: 5%;margin-top: 2%;"
+                    src={path + "/assets/img/ex_01_aula_01.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Faça uma representação em gráfico,utilizando um quadrado para cada unidade da resposta, das respostas das crianças ?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_01/exercicio_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>Qual o total de crianças entrevistadas ?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02">Resposta correta!</p>
+                      <p class="resposta-incorreta-02">Resposta incorreta, a resposta certa é 14!</p>
+
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_01/exercicio_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>Quantas crianças não comem balas ?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-3" type="text">
+                      <br>
+                      <p class="resposta-correta-03">Resposta correta!</p>
+                      <p class="resposta-incorreta-03">Resposta incorreta, a resposta certa é 5!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_01/exercicio_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_01/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Quero agradecer a todos pela atenção durante a nossa aula inicial sobre gráficos. Espero que tenham desfrutado desse passeio pelo mundo dos dados!
+            </p>
+            <p>
+              Durante nossa jornada, exploramos como os gráficos em coluna nos mostram alturas, como os gráficos em linha desenham histórias ao longo do tempo, e como os gráficos em pizza nos lembram de pedaços de informação. A ciência por trás disso é a estatística, que nos ajuda a dar sentido a esses dados e a entender o mundo ao nosso redor.
+            </p>
+            <p>
+              Agora, eu adoraria ouvir de vocês! Como essa aula ajudou? Vocês se sentem mais confortáveis ao lidar com gráficos? Se puderem, compartilhem suas impressões ou façam uma descrição de como a aula influenciou o entendimento de vocês sobre gráficos e estatísticas.
+            </p>
+            <p>
+              Mais uma vez, agradeço pela participação e pela curiosidade demonstrada.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+
+  </body><!--end::Body-->
+</html>

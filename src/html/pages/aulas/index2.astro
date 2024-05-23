@@ -1,0 +1,414 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+      let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+      let respostaCorreta05 = document.getElementsByClassName("resposta-correta-05");
+      let respostaIncorreta05 = document.getElementsByClassName("resposta-incorreta-05");
+
+      respostaCorreta02[0].style = "display: none";
+      respostaIncorreta02[0].style = "display: none";
+      respostaCorreta03[0].style = "display: none";
+      respostaIncorreta03[0].style = "display: none";
+      respostaCorreta05[0].style = "display: none";
+      respostaIncorreta05[0].style = "display: none";
+
+      function verificarRespostas() {
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+        let resposta05 = document.getElementsByClassName("resposta-5").valueOf()[0].value;
+
+        if (resposta02 == "23") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03 == "10") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+
+        if (resposta05.toLowerCase() == "não" || resposta05.toLowerCase() == "nao") {
+          respostaCorreta05[0].style = "display: flex";
+        } else if (resposta05 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta05[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>COMPARANDO GRÁFICOS E TABELAS</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_02/conteúdo_partI.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Para melhor entender esta aula, devemos aprender o que são tabelas. Uma tabela é como uma caixa organizada em linhas e colunas, como uma grade. Pense nela como uma maneira muito organizada de mostrar informações. Cada linha é como uma linha horizontal em um caderno, e cada coluna é como uma linha vertical. Em cada "quadrado" formado pela interseção de uma linha e uma coluna, você pode colocar algum tipo de informação.Por exemplo, vamos imaginar uma tabela simples, vamos imagina dois personagens de desenho: Bob esponja e patrick e vamos imaginar duas categorias "Gosta de Sorvete" e "Gosta de Brócolis". Cada célula indica se o personagem gosta ou não gosta de sorvete ou brócolis. Por exemplo, Bob Esponja gosta de sorvete (Sim) e não gosta de brócolis (Não).
+          </p>
+
+          <p>
+            Para relembrar, Um gráfico é uma representação visual de dados. Ele usa formas geométricas, linhas, pontos, cores e outros elementos visuais para mostrar informações. Os gráficos são úteis para destacar padrões, tendências e relações entre os dados. Eles são frequentemente usados para visualizar dados numéricos, tornando mais fácil para as pessoas entenderem e analisarem as informações rapidamente.
+          </p>
+
+          <p>
+            Existem vários tipos de gráficos, como gráficos de barras, gráficos de linha, gráficos de pizza (ou de setores), gráficos de dispersão, entre outros. Cada tipo de gráfico é mais adequado para diferentes tipos de dados e propósitos.
+          </p>
+
+          <p>
+            Ao se comparar gráficos e tabelas  Principalemnte quando você está transformando um gráfico de barras em uma tabela ou vice-versa, é importante fazer as coisas bem certinhas e detalhadas para que todos possam entender.
+          </p>
+
+          <p>
+            Quando transformamos um gráfico de barras em uma tabela, significa que estamos tirando as informações do gráfico e colocando em uma lista. Isso é como escrever uma lista de compras! Precisamos ter certeza de que incluímos tudo que está nas barrinhas coloridas do gráfico na nossa lista. Assim, todos podem saber o que está acontecendo.
+          </p>
+
+          <p>
+            Ao transformar uma tabela em um gráfico de barras, estamos fazendo o oposto. Estamos pegando uma lista de informações e transformando-as em barrinhas coloridas para que seja mais fácil entender. É como quando você desenha uma história em quadrinhos! É uma forma divertida de mostrar as informações.
+          </p>
+
+          <p>
+            Então, lembre-se, quando estiver transformando informações de um jeito para o outro, mantenha tudo claro e organizado. Isso ajuda todos a entenderem e se divertirem com os dados.
+          </p>
+
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_02/conteúdo_partII.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+
+          <p>
+            É fundamental prestar atenção a alguns pontos para garantir que os dados sejam representados com precisão e clareza:
+          </p>
+
+          <ol>
+            <li>
+              <strong>Compreensão dos Dados:</strong> Antes de fazer a transformação, é importante entender completamente os dados apresentados no gráfico de barras. Isso inclui compreender as categorias ou grupos representados e os valores associados a cada categoria.
+            </li>
+            <li>
+              <strong>Identificação das Categorias:</strong> Ao transformar um gráfico de barras em uma tabela, é necessário identificar todas as categorias ou grupos representados nas barras. Cada categoria deve ser claramente listada na tabela.
+            </li>
+            <li>
+              <strong>Registro dos Valores:</strong> Os valores associados a cada categoria devem ser registrados com precisão na tabela. Certifique-se de que cada valor na tabela corresponda corretamente à altura da barra no gráfico de barras.
+            </li>
+            <li>
+              <strong>Rótulos e Unidades:</strong> A tabela deve conter rótulos claros para identificar as categorias ou grupos e os valores correspondentes. Além disso, se houver unidades específicas (como dólares, números, etc.), elas devem ser incluídas na tabela para garantir uma compreensão completa dos dados.
+            </li>
+            <li>
+              <strong>Organização e Formatação:</strong> A tabela deve ser organizada de maneira lógica e fácil de ler. As categorias e os valores devem ser dispostos de forma clara e ordenada, facilitando a compreensão dos dados pelos leitores.
+            </li>
+            <li>
+              <strong>Interpretação dos Dados:</strong> Após a transformação, é importante interpretar os dados apresentados tanto na tabela quanto no gráfico de barras. Compare as informações nas duas representações e identifique tendências ou padrões nos dados.
+            </li>
+            <li>
+              Ao prestar atenção a esses pontos, é possível transformar com sucesso um gráfico de barras em uma tabela e vice-versa, garantindo uma representação precisa e compreensível dos dados.
+            </li>
+            <li>
+              <strong>Títuloe data:</strong> Titulo precisa ser claro para se entender o motivo da organização de dados. E data por uma questão de organização
+            </li>
+          </ol>
+          <br>
+
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Kwt92IO6DPs?si=ibMR51dxO8uOdSBp"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_02/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            O objetivo da aula, além de transmitir o conhecimento correto a respeito dos  conceitos de gráficos e tabelas, é fazer com que você consiga analisar e relacionar informçõses em tabelas aos dados apresentados em gráficos.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+            <h2>AQUECIMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_02/aquecimento_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Nesse momento, vamos colocar em prática tudo aquilo que aprendemos ao decorrer da aula e para isso, vamos fazer uma série de atividades.Imaginemos um grafico em bara com o seguinte tema "bricadeiras preferidas do segundo ano"
+            </p>
+            <p>
+              Onde dez crianças escolheram pega-pega,8 pular corda,seis esconde-esconde e três queimado. Diante das insformações, responda:
+            </p>
+
+            <ol>
+              <li>
+                Qual a brincadeira favorita?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_02/aquecimento_1.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Qual a brincadeira que menos crianças gostam?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_02/aquecimento_2.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Quantas crianças participaram da pesquisa? Como é possível saber?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_02/aquecimento_3.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_02/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Bruno fez uma pesquisa em  relação a merenda oferecida pela escola, ele apresentou o resultado em forma de uma tabela  de duas colunas e três linhas. A primeira coluna referia a satisfação das pessoas contendo gosto,as vezes e não gosto. A coluna ao lado referia a quantidade. Como resultado ele teve que dez pessoas gostam, cinco gostam as vezes e oito não gostam. Responda:
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_02.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Qual o resultado que Bruno encontrou?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+
+                    <li>
+                      <p>Quantas pessoas que foram pesquisadas ?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é 23!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+
+                    <li>
+                      <p>Quantas pessoas gostam ?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-3" type="text">
+                      <br>
+                      <p class="resposta-correta-03 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-03 resposta-incorreta">Resposta incorreta, a resposta certa é 10!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+
+                    <li>
+                      <p>De quando é a pesquisa?</p>
+
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_04.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+
+                    <li>
+                      <p>A maioria não gosta da merenda?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-5" type="text">
+                      <br>
+                      <p class="resposta-correta-05 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-05 resposta-incorreta">Resposta incorreta, a resposta certa é "Não"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_05.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+
+                    <li>
+                      <p>De quando é a pesquisa?</p>
+
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_06.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+
+                    <li>
+                      <p>Desenhe um gráfico em barra relacionada a tabela.</p>
+
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_02/exec_07.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_02/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Agradeço por explorarmos juntos a importância da transformação entre gráficos de barras e tabelas. Ao entender e aplicar esses conceitos, fortalecemos nossa capacidade de analisar dados e comunicar informações de maneira precisa e compreensível.o seguir essas orientações, podemos transformar com sucesso gráficos de barras em tabelas e vice-versa, permitindo uma análise mais detalhada e uma comunicação eficaz dos insights derivados dos dados apresentados. Essa habilidade não apenas fortalece nossa compreensão dos dados, mas também nos capacita a comunicar nossas descobertas de forma clara e acessível a outros.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

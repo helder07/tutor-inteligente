@@ -1,0 +1,163 @@
+---
+import {convertPathToHtml} from "../../../utils/index.js";
+const {path, mainPage, page} = Astro.props;
+const htmlPath = convertPathToHtml(path);
+---
+
+<!--begin::Sidebar-->
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark" style="font-size: small;">
+  <!--begin::Sidebar Brand-->
+  <div class="sidebar-brand">
+    <!--begin::Brand Link-->
+    <a href={htmlPath + "/index.html"} class="brand-link">
+      <!--begin::Brand Image-->
+      <!--end::Brand Image-->
+      <!--begin::Brand Text-->
+      <span class="brand-text fw-light">Tutor Inteligente</span>
+      <!--end::Brand Text-->
+    </a>
+    <!--end::Brand Link-->
+  </div>
+  <!--end::Sidebar Brand-->
+  <!--begin::Sidebar Wrapper-->
+  <div class="sidebar-wrapper">
+    <nav class="mt-2">
+      <!--begin::Sidebar Menu-->
+      <ul
+        class="nav sidebar-menu flex-column"
+        data-lte-toggle="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <li class:list={["nav-item", mainPage === "dashboard" && "menu-open"]}>
+          <a
+            href="#"
+            class:list={["nav-link", mainPage === "dashboard" && "active"]}
+          >
+            <i class="nav-icon bi bi-speedometer"></i>
+            <p>
+              Gráficos
+              <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <p>A1 - Conhecendo os Gráficos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index2.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <p>A2 - Comparando Gráficos de Tabelas</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index3.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A3 - Compreender dados expressos em tabelas</p>
+                  <p>e em gráficos de colunas simples</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index4.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A4 - Gráficos e as relações com quadros e tabelas</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index5.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A5 - Gráfico e texto - Uma relação apropriada</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index6.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A6 - Resolvendo situações problemas com </p>
+                  <p>o apoio de tabelas</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index7.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A7 - Catecorizar para tabelas</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index8.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A8 - Lendo tabelas e confirmando afirmações</p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/index9.html"}
+                class:list={["nav-link", page === "index" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                  <p>A9 - Tabelas, gráficos e textos se complementam</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!--end::Sidebar Menu-->
+    </nav>
+  </div>
+  <!--end::Sidebar Wrapper-->
+</aside>
+<!--end::Sidebar-->

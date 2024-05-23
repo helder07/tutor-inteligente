@@ -1,0 +1,277 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta01 = document.getElementsByClassName("resposta-correta-01");
+      let respostaIncorreta01 = document.getElementsByClassName("resposta-incorreta-01");
+
+      respostaCorreta01[0].style = "display: none";
+      respostaIncorreta01[0].style = "display: none";
+
+      function verificarRespostas() {
+        let resposta01 = document.getElementsByClassName("resposta-1").valueOf()[0].value;
+        console.log(resposta01)
+
+        if (resposta01 == "2030") {
+          respostaCorreta01[0].style = "display: flex";
+        } else if (resposta01 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta01[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Compreender dados expressos em tabelas e em gráficos de colunas simples</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_05/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Gráficos e textos se conversam de diversas formas em um enunciado,ambos podem ser ótimos aliados quando buscam alucidar algo para alguém,por exemplo:
+          </p>
+
+          <ol>
+            <li>
+              Contextualização e Explicação: Um texto pode fornecer contexto e explicação para um gráfico, ajudando os leitores a entender o que estão vendo e por que é importante. Por exemplo, um texto pode explicar os dados representados em um gráfico de barras, fornecendo informações adicionais sobre o contexto em que os dados foram coletados.
+            </li>
+            <li>
+              Detalhamento de Resultados: Um texto pode detalhar os resultados apresentados em um gráfico, destacando tendências, padrões ou pontos de interesse que podem não ser imediatamente óbvios ao olhar apenas para o gráfico. Isso ajuda os leitores a entenderem completamente o significado dos dados.
+            </li>
+            <li>
+              Ilustração Visual: Por outro lado, um gráfico pode ilustrar visualmente os pontos-chave ou as conclusões apresentadas em um texto. Às vezes, uma imagem vale mais do que mil palavras, e um gráfico bem projetado pode transmitir informações complexas de forma rápida e acessível.
+            </li>
+            <li>
+              Complementação de Informações: O texto e o gráfico podem complementar-se, fornecendo diferentes perspectivas ou detalhamentos sobre o mesmo tópico. Por exemplo, um texto pode fornecer uma visão geral de um fenômeno, enquanto um gráfico pode fornecer uma representação visual detalhada de como os dados se comportam ao longo do tempo.
+            </li>
+            <li>
+              Apresentação de Dados Complexos: Em alguns casos, os dados podem ser complexos demais para serem totalmente explicados em um texto. Nesses casos, um gráfico pode ser usado para simplificar e visualizar os dados de uma maneira que seja mais facilmente compreensível para os leitores.
+            </li>
+          </ol>
+
+          <p>
+            Em resumo, gráficos e textos podem ter uma relação muito apropriada e benéfica, trabalhando juntos para transmitir informações de forma clara, compreensível e convincente. Quando usados de forma inteligente e estratégica, eles podem aumentar significativamente a eficácia da comunicação de dados.
+          </p>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/QvjiWu1rAQ8?si=uWJQbDVkaA5eNo97" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_05/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Como objetivo neste tópico é provar para o aluo que um texto pode complementar um gráfico e um gráfico pode complementar um texto para melhorar a transmissão de conhecimento.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+          <h2>AQUECIMENTO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_05/aquecimento.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Vamos imaginar um gráfico com duas barras, as pessoas ouvidas nessa captura de dados foram alunos em uma sala de aula, onde se tem 16 meninos e 14 meninas.
+          </p>
+          <ol>
+            <li>
+              Qual título você colocaria no gráfico ?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_05/aquecimento_01.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+            <li>
+              Como você desenharia esse gráfico?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_05/aquecimento_02.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+          </ol>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_05/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    A seguir, se tem um gráfico com 5 barras. Com o título “ Fauna da mata Atlântica” onde se tem oitocentos e cinquenta espécies de aves, trezentos e cinquenta espécies de anfíbios, duzentos espécies de répteis,duzentos e cinquenta espécies de mamíferos e trezentos e cinquenta espécies de peixes, responda a seguir:
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_05.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        A fauna da mata Atlântica é muito grande, existem mais de oitocentas espécies de aproximadamente quatrocentas espécies de anfíbios é exatamente duzentas de somando o reino animal no gráfico, existem um total de
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-1" type="text">
+                      <br>
+                      <p class="resposta-correta-01 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-01 resposta-incorreta">Resposta incorreta, a resposta certa é 2.030!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_05/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_05/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              A relação entre gráficos e textos é fundamental para uma comunicação eficaz de dados. Ambos têm papéis importantes a desempenhar na transmissão de informações de maneira clara, compreensível e persuasiva.
+            </p>
+            <p>
+              Gráficos podem ajudar a visualizar padrões, tendências e relações em dados de uma forma que seja facilmente compreendida e memorável. Eles simplificam informações complexas e fornecem uma representação visual que pode ser absorvida rapidamente pelos leitores.
+            </p>
+            <p>
+              Por outro lado, textos fornecem contexto, explicação e interpretação dos dados apresentados nos gráficos. Eles ajudam a fundamentar os números em um contexto mais amplo, destacando o significado e as implicações dos resultados apresentados.
+            </p>
+            <p>
+              Ao trabalhar em conjunto, gráficos e textos complementam-se, fornecendo uma visão abrangente e multifacetada dos dados. Eles ajudam a contar uma história mais completa, permitindo que os leitores entendam não apenas o que os dados mostram, mas também por que são importantes e como se relacionam com o mundo ao seu redor.
+            </p>
+            <p>
+              Portanto, ao comunicar dados, é essencial considerar a relação entre gráficos e textos e utilizá-los de forma estratégica para transmitir informações de maneira clara, impactante e convincente.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

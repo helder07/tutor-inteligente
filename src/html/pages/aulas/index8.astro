@@ -1,0 +1,304 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta01 = document.getElementsByClassName("resposta-correta-01");
+      let respostaIncorreta01 = document.getElementsByClassName("resposta-incorreta-01");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+      let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+      function verificarRespostas() {
+        let resposta01 = document.getElementsByClassName("resposta-1").valueOf()[0].value;
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+
+        console.log(resposta01)
+        console.log(resposta02)
+        console.log(resposta03)
+
+        if (resposta01.toLowerCase() == "sim") {
+          respostaCorreta01[0].style = "display: flex";
+        } else if (resposta01 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta01[0].style = "display: flex"
+        }
+
+        if (resposta02.toLowerCase() == "sim") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03.toLowerCase() == "sim") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Lendo tabelas e confirmando afirmações</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_08/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Para entendermos de fato tudo que uma tabela pode nos proporcionar de informação, devemos consolidar tudo aquilo que estamos construindo no decorrer das aulas. As tabelas são uma forma eficaz de organizar e apresentar dados de maneira clara e organizada. Elas consistem em linhas e colunas, onde cada célula contém uma parte específica dos dados. Aqui estão alguns pontos-chave que aprendemos sobre tabelas:
+          </p>
+
+          <ol>
+            <li>
+              <strong>Estruturação de Dados:</strong> As tabelas fornecem uma estrutura visual para apresentar informações de forma organizada. Elas são compostas por linhas horizontais e colunas verticais, onde cada célula contém um valor de dados.
+            </li>
+            <li>
+              <strong>Organização e Categorização:</strong> As tabelas permitem organizar os dados em categorias relevantes, facilitando a compreensão e análise dos dados apresentados. Por exemplo, em uma tabela de vendas, os produtos podem ser categorizados por tipo, como roupas, calçados, acessórios, etc.
+            </li>
+            <li>
+              <strong>Apresentação de Dados Quantitativos:</strong> Tabelas são frequentemente usadas para apresentar dados quantitativos, como números, quantidades e valores. Elas permitem uma visualização clara e concisa das informações, facilitando a comparação e análise dos dados.
+            </li>
+            <li>
+              <strong>Interpretação de Informações:</strong> Ao ler uma tabela, é importante interpretar as informações apresentadas com cuidado. Isso inclui entender os títulos das colunas e linhas, analisar os valores dos dados e identificar tendências ou padrões nos dados apresentados.
+            </li>
+            <li>
+              <strong>Tomada de Decisões:</strong> Tabelas são frequentemente usadas como ferramentas de suporte à decisão em uma variedade de contextos, desde negócios e finanças até ciência e pesquisa. Elas fornecem uma visão clara e estruturada dos dados, ajudando a fundamentar a tomada de decisões informadas.
+            </li>
+          </ol>
+
+          <p>
+            Em resumo, as tabelas são uma ferramenta valiosa para organizar, apresentar e interpretar dados de forma clara e eficaz. Ao compreendermos como ler e interpretar tabelas corretamente, podemos aproveitar ao máximo essa poderosa ferramenta para análise e comunicação de dados em uma variedade de situações.
+          </p>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_08/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            O grande objeivo desta aula é,de fato avaliar se você realmemte consegue entender e interpretar os dados oraganizados fornecidos em uma tabela
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_08/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Foi feita uma pesquisa na classe para sabermos qual local nossos amigos gostam de ir na férias. Os dados foram registrados em uma tabela. A tabela tem duas colunas,a coluna um tem o título lugar e a dois tem o título, número de crianças. Praia tem seis crianças, campo tem três crianças, casa dos parentes tem oito crianças e ficar em casa tem duas crianças, responda a seguir:
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_08.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      Qual o melhor título para essa tabela ?
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_08/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                    <li>
+                      O que a pesquisa descobriu ?
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_08/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                    <li>
+                      <p>
+                        Poucos gostam de ficar em casa ?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-1" type="text">
+                      <br>
+                      <p class="resposta-correta-01 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-01 resposta-incorreta">Resposta incorreta, a resposta certa é "Sim"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_08/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Campo é um dos passeios menos desejados ?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é "Sim"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_08/exec_04.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        A maioria prefere a praia?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-3" type="text">
+                      <br>
+                      <p class="resposta-correta-03 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-03 resposta-incorreta">Resposta incorreta, a resposta certa é "Sim"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_08/exec_05.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_08/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Na aula de hoje,o mais importante é você ter aprendido,de fato, que os dados em tabelas podem ajudar a organizar as informações deixando-as mais fáceis de se interpretar e compreender para comparar com outras informações. Por isso se pode perceber hipóteses que se confirmam. As tabelas facilitam a vida.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

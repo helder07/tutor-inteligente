@@ -1,0 +1,265 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Catecorizar para tabelas.</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_07/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Categorizar para organizar tabelas é uma estratégia poderosa para apresentar dados de forma clara e compreensível. Ao categorizar os dados em grupos ou categorias relevantes, podemos facilitar a identificação de padrões, tendências e relações nos dados apresentados. Isso ajuda os leitores a entenderem melhor as informações e a tirarem conclusões significativas.
+          </p>
+          <p>
+            Por exemplo, em uma tabela de vendas de uma loja, podemos categorizar os produtos em diferentes categorias, como eletrônicos, roupas, acessórios, etc. Em seguida, podemos organizar os dados das vendas de cada produto dentro de suas respectivas categorias. Isso permite uma análise mais eficaz das vendas por categoria e facilita a comparação entre diferentes tipos de produtos.
+          </p>
+          <p>
+            Além disso, categorizar os dados em uma tabela também pode ajudar a tornar a informação mais fácil de ser acessada e entendida. Os leitores podem rapidamente identificar a categoria relevante para sua pesquisa e localizar os dados específicos que estão procurando.
+          </p>
+          <p>
+            Em resumo, categorizar para organizar tabelas é uma técnica valiosa que nos ajuda a apresentar dados de forma mais estruturada, acessível e significativa. Ao utilizar essa abordagem, podemos tornar a informação mais fácil de ser interpretada e utilizada para tomar decisões informadas.
+          </p>
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_07/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Como o conhecimento em relação a tabelas foi contruído durante as aulas passadas, o objetivo central e saber caracterizar os elemntos para assim organizar e classificar tabelas a partir dos dados.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+          <h2>AQUECIMENTO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_07/aquecimento_enunciado.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Imaginamos que nós estamos em um supermercado, eu pego uma embalagem de biscoito recheado e avisto uma tabela. Tabela está que tem três colunas intituladas de item,onde se tem gorduras totais,vitamina A e ferro. A outra coluna tem o título de quantidade onde se tem valores de seis vírgula cinco gramas, noventa microgramas e dois vírgula um gramas. Por fim,na última coluna,se tem de título valores diários e os valores doze,quinze e quinze. Ou seja,uma tabela de três colunas e três linhas.
+          </p>
+          <div>
+            <img
+              style="width: 100%;"
+              src={path + "/assets/img/aq_01_aula_07.png"}
+              alt="User Avatar"
+            />
+          </div>
+          <ol>
+            <li>
+              Vocês já ouviram falar nessas tabelas ?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_07/aquecimento_01.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+            <li>
+              Sabe como elas se chamam  ?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_07/aquecimento_02.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+            <li>
+              O que significa a palavra ITEM na tabela?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_07/aquecimento_03.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+          </ol>
+      </section>
+
+      <hr>
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_07/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Imaginemos que em sua casa foram feitas as compras para o mês, foi lhe dado a missão de organizar as frutas! Como você está familiarizado com organização, você decidiu dividir as frutas em duas partes as que você come e as que você não come. Você disponível: banana, maçã, uva, abacate, tomate, ameixa, pera, coco e limão.
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_07.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Todas as frutas estão divididas,usou além da citadas?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_07/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Qual estratégia você ultilizou para organizar ?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_07/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Você ultilizaria de outra as frutas pra organizar de outra maneira ?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_07/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Se sim, qual ?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_07/exec_04.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                  </ol>
+                  <br>
+
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_07/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              A categorização e organização de tabelas desempenham um papel crucial na apresentação eficaz de dados em uma variedade de contextos. Ao categorizar os dados em grupos significativos e organizar essas categorias de forma lógica e coerente, podemos facilitar a compreensão e análise dos dados apresentados.
+            </p>
+            <p>
+              Uma abordagem cuidadosa para categorizar e organizar tabelas pode ajudar a identificar padrões, tendências e relações nos dados, fornecendo insights valiosos para tomada de decisões informadas. Além disso, essa técnica permite que os leitores acessem e localizem rapidamente as informações relevantes, tornando a apresentação dos dados mais eficiente e acessível.
+            </p>
+            <p>
+              É importante lembrar que a categorização e organização de tabelas devem ser feitas de forma lógica e consistente, levando em consideração as necessidades e objetivos específicos do público-alvo. Ao selecionar as categorias adequadas e organizar os dados de maneira clara e concisa, podemos garantir que a informação seja comunicada de forma eficaz e compreensível para todos os envolvidos.
+            </p>
+            <p>
+              Portanto, ao trabalhar com tabelas e dados, é essencial considerar cuidadosamente como categorizar e organizar as informações apresentadas. Ao fazê-lo, podemos maximizar o impacto dos dados apresentados e fornecer uma base sólida para análise e tomada de decisões em uma ampla gama de contextos.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

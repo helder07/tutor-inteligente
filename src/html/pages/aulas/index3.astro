@@ -1,0 +1,314 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+      let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+      respostaCorreta02[0].style = "display: none";
+      respostaIncorreta02[0].style = "display: none";
+      respostaCorreta03[0].style = "display: none";
+      respostaIncorreta03[0].style = "display: none";
+
+      function verificarRespostas() {
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+        console.log(resposta03)
+
+        if (resposta02 == "5") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03.toLowerCase() == "dinossauros" || resposta03.toLowerCase() == "Dinossauro") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Compreender dados expressos em tabelas e em gráficos de colunas simples</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_03/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Olá, pessoal! Vocês sabiam que existem muitas maneiras diferentes de encontrar e entender informações? Vamos descobrir juntos comointerpretar textos, tabelas e gráficos para encontrar dados importantes.
+          </p>
+
+          <ol>
+            <li>
+              <strong>Lendo Textos:</strong> Quando você lê um texto, é como embarcar em uma aventura! Procure por palavras importantes que podem ser nomes, números ou fatos interessantes. Essas palavras podem lhe dar pistas sobre o que é realmente importante no texto. Também é útil prestar atenção aos títulos e subtítulos, pois eles geralmente resumem do que se trata o texto.
+            </li>
+            <li>
+              <strong>Explorando Tabelas:</strong> As tabelas são como listas organizadas em linhas e colunas. Cada linha e coluna contém informações diferentes. Ao olhar para uma tabela, verifique os títulos das linhas e colunas para entender o que está sendo mostrado. Depois, observe as células da tabela para encontrar dados importantes. Às vezes, as células podem conter números, datas ou nomes que são cruciais para entender as informações.
+            </li>
+            <li>
+              <strong>Desvendando Gráficos:</strong> Gráficos são como desenhos mágicos que nos mostram informações de maneira legal. Por exemplo, um gráfico de barras nos mostra números em forma de barras coloridas. Cada barra representa algo diferente, e a altura da barra nos mostra se é muito ou pouco. Ao explorar um gráfico, preste atenção aos rótulos dos eixos e às legendas para entender o que está sendo mostrado. Você pode comparar as barras para descobrir quais são os dados mais importantes.
+            </li>
+            <li>
+              <strong>Comparando e Concluindo:</strong> Quando você lê textos, tabelas e gráficos, pode encontrar muitas informações interessantes. Às vezes, diferentes tipos de informações são apresentados de maneiras diferentes. Por exemplo, um texto pode nos contar uma história, uma tabela pode nos mostrar números organizados e um gráfico pode nos ajudar a ver padrões e tendências. Comparando essas diferentes formas de informação, podemos tirar conclusões importantes e aprender coisas novas.
+            </li>
+          </ol>
+
+          <p>
+            Então, da próxima vez que você estiver lendo algo interessante, lembre-se dessas dicas! Com prática e curiosidade, você pode se tornar um verdadeiro detetive de dados, descobrindo informações incríveis em textos, tabelas e gráficos.
+          </p>
+          <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/isEInfmD0Yw?si=QwV_l0kJU7-M-X1_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_03/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Por intermédio de uma boa concentração e entemdimento dos assuntos abordados até aqui, o objetivo da aula, além de transmitir o conhecimento correto a respeito dos  conceitos de gráficos é fazer com que você localize dados em várias formas de de apresentação, sejam elas em textos,gráficos ou tabelas.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+            <h2>AQUECIMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_03/aquecimento_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Nesse momento, vamos colocar em prática tudo aquilo que aprendemos ao decorrer da aula e para isso, vamos fazer uma série de atividades.Imaginemos um grafico em bara com o seguinte tema "bricadeiras preferidas do segundo ano"
+            </p>
+            <ol>
+              <li>
+                É possível descobrir quantas pessoas gostam de doces, sendo que sabemos quantas gostam de salgados e sabemos o total de pessoas pesquisadas?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_03/aquecimento_01.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Quantas gostam de doce ?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_03/aquecimento_02.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+              <li>
+                Quanto falta de dez para completar vinte e um? Essa informação me ajuda?
+                <br>
+                <audio controls="controls">
+                  <source src={"/src/html/pages/aulas/audios/aula_03/aquecimento_03.mp3"} />
+                  seu navegador não suporta HTML5
+                </audio>
+              </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_03/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Em uma escola,a professora resolveu investigar o que seus alunos gostam de estudar. Eles sugeriram temas bem interessante como : dinossauros, animais selvagens e planetas
+                  </p>
+                  <p>
+                    A professora quer organizar em tabela as informações que os alunos forneceram. Sabendo que os vinte e três alunos responderam, responda as questões a seguir
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_03.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Sabendo que a professora vai fazer um gráfico de duas colunas, qual seriam os títulos mais adequados?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_03/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+
+                    <li>
+                      <p>
+                        Sabendo que quatro crianças escolheram planetas e que o triplo escolheu dinssauros em relação a planetas, quantas crianças escolheram animais selvagens?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é 5!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_03/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+
+                    <li>
+                      <p>Qual seria a maior coluna nesse gráfico sobre os assuntos ?</p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-3" type="text">
+                      <br>
+                      <p class="resposta-correta-03 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-03 resposta-incorreta">Resposta incorreta, a resposta certa é "Dinossauros"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_03/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_03/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Muito obrigado por explorarmos juntos como entender e encontrar dados relevantes em textos, tabelas e gráficos! Foi muito divertido aprender e descobrir novas maneiras de interpretar informações. Lembre-se, o mundo está cheio de dados esperando para serem explorados, e agora vocês têm as ferramentas para se tornarem verdadeiros especialistas em encontrar e entender essas informações. Continue praticando e mantendo sua curiosidade viva! Se você tiver mais perguntas ou quiser aprender mais sobre qualquer coisa, estarei sempre aqui para ajudar. Até a próxima aventura de aprendizado!
+
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

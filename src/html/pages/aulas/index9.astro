@@ -1,0 +1,316 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta01 = document.getElementsByClassName("resposta-correta-01");
+      let respostaIncorreta01 = document.getElementsByClassName("resposta-incorreta-01");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      function verificarRespostas() {
+        let resposta01 = document.getElementsByClassName("resposta-1").valueOf()[0].value;
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+
+        if (resposta01.toLowerCase() == "32,14 e 1") {
+          respostaCorreta01[0].style = "display: flex";
+        } else if (resposta01 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta01[0].style = "display: flex"
+        }
+
+        if (resposta02.toLowerCase() == "sim") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Tabelas, gráficos e textos se complementam</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_09/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Sim, tabelas, gráficos e textos são como uma equipe de super-heróis que trabalham juntos para contar histórias e mostrar informações importantes. Veja só:
+          </p>
+
+          <ol>
+            <li>
+              <strong>Amigos que se Completam:</strong> O texto conta a história e explica as coisas com palavras. As tabelas e os gráficos são como desenhos ou mapas que ajudam a mostrar visualmente o que está sendo explicado. Eles trabalham juntos para que todos possam entender melhor.
+            </li>
+            <li>
+              <strong>Detalhes que Saltam aos Olhos:</strong> Às vezes, as palavras podem não ser suficientes para explicar algo direito. É aí que as tabelas e os gráficos entram em cena! Eles mostram números e informações de uma forma que é fácil de ver e entender, como fotos coloridas em um livro.
+            </li>
+            <li>
+              <strong>Contando a História de Forma Legal:</strong> Os gráficos e tabelas tornam a história mais interessante, mostrando detalhes e padrões de uma maneira legal e fácil de entender. É como se eles dessem vida à história, fazendo-a ficar mais divertida e emocionante.
+            </li>
+            <li>
+              <strong>Todos Juntos, Sempre:</strong> Quando o texto, as tabelas e os gráficos se unem, eles formam uma equipe imbatível! Eles se ajudam a contar a história da melhor maneira possível, garantindo que todos entendam o que está acontecendo. Juntos, eles fazem um ótimo trabalho!
+            </li>
+          </ol>
+
+          <p>
+            Então, sim, tabelas, gráficos e textos são como amigos que trabalham juntos para tornar a comunicação de informações mais fácil e divertida!
+          </p>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_09/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            O objetivo de dizer que tabelas, gráficos e textos se complementam é como dizer que diferentes peças de um quebra-cabeça se encaixam para criar uma imagem completa. Cada uma dessas ferramentas - tabelas, gráficos e textos - tem um papel especial na transmissão de informações. Por exemplo, as tabelas são como listas organizadas que mostram números e dados de forma direta. Os gráficos são como desenhos coloridos que ajudam a visualizar tendências e padrões nos dados. E os textos são como histórias que explicam e contextualizam as informações apresentadas. Quando usamos essas três coisas juntas, podemos transmitir mensagens de forma mais clara e interessante, garantindo que todos possam entender e aprender.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="aquecimento">
+          <h2>AQUECIMENTO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_09/aquecimento_enunciado.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Vamos imaginar uma situação,dois amigos estão jogando determinado jogo que tenha pontuação. Bruno tem cinco pontos e Cauê tem dez pontos, responda:
+          </p>
+          <div>
+            <img
+              style="width: 100%;"
+              src={path + "/assets/img/aq_01_aula_09.png"}
+              alt="User Avatar"
+            />
+          </div>
+          <ol>
+            <li>
+              Por que as tabelas ajudam na comparação de pontos ?
+              <br>
+              <audio controls="controls">
+                <source src={"/src/html/pages/aulas/audios/aula_09/aquecimento_01.mp3"} />
+                seu navegador não suporta HTML5
+              </audio>
+            </li>
+          </ol>
+      </section>
+
+      <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_09/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Você sabia que os mamíferos podem ter de um a trinta e dois filhotes de uma vez ?
+                  </p>
+                  <div>
+                    <img
+                      style="width: 100%;"
+                      src={path + "/assets/img/aq_01_aula_09.png"}
+                      alt="User Avatar"
+                    />
+                  </div>
+                  <p>
+                    Pois é, o recordista é o tanreque,uma animal pequeno que pode gerar trinta e dois crias,o coelho pode gerar até quatorze e o ser humano,em geral, um. Com base nisso, responda:
+                  </p>
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      Que informações temos no texto que poderiam ser organizadas em uma tabela?
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_09/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                    <li>
+                      <p>
+                        Quais os números que aparecem no texto?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-1" type="text">
+                      <br>
+                      <p class="resposta-correta-01 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-01 resposta-incorreta">Resposta incorreta, a resposta certa é 32,14 e 1!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_09/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      Como eles se relaconam ?
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_09/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                    <li>
+                      <p>
+                        Você acha que a quantidade de filhotes dos mamíferos se relaciona com o tamanho de uma barra em um gráfico?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é "Sim"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_09/exec_04.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      Construa um grafico em barra com essas informações.
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_09/exec_05.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_09/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Exploramos como tabelas, gráficos e textos podem trabalhar juntos para comunicar informações de forma eficaz. Cada um desses elementos tem seu papel único, mas juntos formam uma equipe poderosa para transmitir mensagens de maneira clara e compreensível. As tabelas organizam os dados de forma estruturada, os gráficos visualizam padrões e tendências, e os textos explicam e contextualizam as informações apresentadas.
+            </p>
+            <p>
+              Quando usamos tabelas, gráficos e textos em conjunto, podemos fornecer uma compreensão mais completa e envolvente de um determinado assunto, atendendo às diferentes necessidades e preferências do público-alvo. É como montar um quebra-cabeça, onde cada peça contribui para a imagem geral.
+            </p>
+            <p>
+              Agradecemos a atenção e esperamos que esteja claro como tabelas, gráficos e textos podem se complementar e trabalhar juntos para comunicar informações de forma eficaz. Se tiver mais perguntas ou precisar de mais alguma coisa, estamos aqui para ajudar!
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

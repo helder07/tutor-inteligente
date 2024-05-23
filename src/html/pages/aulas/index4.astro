@@ -1,0 +1,257 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+      let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+      respostaCorreta02[0].style = "display: none";
+      respostaIncorreta02[0].style = "display: none";
+      respostaCorreta03[0].style = "display: none";
+      respostaIncorreta03[0].style = "display: none";
+
+      function verificarRespostas() {
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+        console.log(resposta03)
+
+        if (resposta02 == "5") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03.toLowerCase() == "dinossauros" || resposta03.toLowerCase() == "Dinossauro") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Compreender dados expressos em tabelas e em gráficos de colunas simples</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_04/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Nossa conversa até agora tem se centrado em como interpretar e compreender dados de forma clara e acessível. Começamos discutindo a importância de interpretar textos com atenção, procurando por palavras-chave e prestando atenção aos títulos e subtítulos para ter uma compreensão completa do conteúdo. Em seguida, exploramos tabelas, que são como listas organizadas em linhas e colunas. Ao interpretar uma tabela, destacamos a importância de verificar os títulos das linhas e colunas, além de examinar as células para encontrar dados importantes, como números, datas ou nomes. Por fim, mergulhamos nos gráficos de barras, que são uma maneira visualmente atraente de representar informações. Aprendemos que cada barra colorida em um gráfico de barras conta uma história diferente, e para entender completamente o que o gráfico está nos dizendo, precisamos interpretar os rótulos nos eixos horizontal e vertical, que indicam as categorias e os valores representados. Em resumo, descobrimos que, ao interpretar textos, analisar tabelas ou interpretar gráficos de barras, existem várias maneiras de descobrir e entender dados importantes. Com prática e curiosidade, podemos nos tornar verdadeiros detetives de dados, explorando e aprendendo mais sobre o mundo ao nosso redor.
+          </p>
+
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_04/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Nosso objetivo hoje, além de fazer essa retomada do que foi apresentado a voçês, é apesentar situações problemas para fixar os assuntos abordados até aqui.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_04/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    De acordo com o gráfico relacionado a fruta preferida das crianças do primeiro ano,sabendo que nesta sala tem quinze alunos,responda:
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_04.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Sabendo que duas pessoas gostam de uva, o dobro das pessoas que gostam de uva gostam de maçã e o triplo de pessoas que gostam de uva gostam de banana,quantas gostam de maçã ?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-1" type="text">
+                      <br>
+                      <p class="resposta-correta-01 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-01 resposta-incorreta">Resposta incorreta, a resposta certa é "Uma"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_04/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+
+                    <li>
+                      <p>
+                        Em um gráfico barras, é demonstrando a preferência de lanches das crianças. Três gostam de cereal seis de tapioca sete de bolacha/fruta, dez de bisnaguinha e dezessete de cachorro quente. Quais das opções no gráfico pode ser relacionado pode ser relacionado ao lanche que as crianças menos gostam ?
+                      </p>
+                      <ol>
+                        <li>Helder,Luiz e Maria</li>
+                        <li>Luiz,Fernando,Lucas e Lúcio</li>
+                        <li>Felipe é Chris</li>
+                      </ol>
+                      <label>Insira a sua alternativa correta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é "Dinossauros"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_04/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_04/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Agora que exploramos como interpretar e compreender dados em textos, tabelas e gráficos de barras, é hora de aplicar esse conhecimento em situações do dia-a-dia.
+            </p>
+            <p>
+              Imagine que você está planejando uma festa de aniversário e precisa decidir quantos convites enviar para cada amigo. Você pode usar uma tabela para listar o nome de cada amigo e o número de convites que deseja enviar para cada um. Isso o ajudará a organizar suas decisões e garantir que todos os seus amigos sejam convidados adequadamente.
+            </p>
+            <p>
+              Além disso, você pode usar um gráfico de barras para comparar diferentes opções de presentes que deseja comprar para o aniversariante. Cada barra colorida no gráfico representará um presente diferente, e a altura da barra indicará o preço de cada presente. Isso facilitará a visualização das opções e ajudará na tomada de decisão.
+            </p>
+            <p>
+              No entanto, lembre-se sempre de interpretar os dados com cuidado e considerar todas as informações disponíveis antes de fazer uma escolha final. Às vezes, os números podem não contar a história completa, então é importante analisar os detalhes e entender o contexto por trás dos dados apresentados.
+            </p>
+            <p>
+              Com prática e paciência, você se tornará um mestre em interpretar dados e tomar decisões informadas em diversas situações da vida cotidiana. Continue explorando e aprendendo, e nunca deixe de se surpreender com o poder dos dados!
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>

@@ -1,0 +1,343 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Tutor Inteligente";
+const path = "../../dist";
+const mainPage = "dashboard";
+const page = "index2";
+---
+
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <Head title={title} path={path} />
+    <style>
+      body {
+        text-align: justify;
+        color: #3e4854;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 2%;
+      }
+
+      hr {
+        margin-top: 4%;
+      }
+
+      audio {
+        text-align: center;
+      }
+
+      .app-main {
+        width: 60%; /* ou o valor desejado */
+        margin: 0 auto; /* Define as margens automáticas para centralizar */
+        padding: 20px; /* Apenas para visualização */
+      }
+
+      .lists ol {
+          list-style-type: upper-alpha; /* Utiliza letras maiúsculas (A, B, C, ...) */
+      }
+
+      .resposta-correta {
+        display: none;
+        background-color: green;
+      }
+
+      .resposta-incorreta {
+        display: none;
+        background-color: red;
+      }
+
+      #botao-resposta {
+        font-size:15px;
+        font-family:Arial;
+        width:5%px;
+        height:50px;
+        border-width:1px;
+        color:#666666;
+        border-color:#dcdcdc;
+        font-weight:bold;
+        border-top-left-radius:6px;
+        border-top-right-radius:6px;
+        border-bottom-left-radius:6px;
+        border-bottom-right-radius:6px;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(#ffffff, #f6f6f6);
+      }
+    </style>
+  </head>
+
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <script>
+      let btn = document.getElementById("botao-resposta");
+
+      let respostaCorreta01 = document.getElementsByClassName("resposta-correta-01");
+      let respostaIncorreta01 = document.getElementsByClassName("resposta-incorreta-01");
+
+      let respostaCorreta02 = document.getElementsByClassName("resposta-correta-02");
+      let respostaIncorreta02 = document.getElementsByClassName("resposta-incorreta-02");
+
+      let respostaCorreta03 = document.getElementsByClassName("resposta-correta-03");
+      let respostaIncorreta03 = document.getElementsByClassName("resposta-incorreta-03");
+
+      let respostaCorreta04 = document.getElementsByClassName("resposta-correta-04");
+      let respostaIncorreta04 = document.getElementsByClassName("resposta-incorreta-04");
+
+      let respostaCorreta05 = document.getElementsByClassName("resposta-correta-05");
+      let respostaIncorreta05 = document.getElementsByClassName("resposta-incorreta-05");
+
+      function verificarRespostas() {
+        let resposta01 = document.getElementsByClassName("resposta-1").valueOf()[0].value;
+        let resposta02 = document.getElementsByClassName("resposta-2").valueOf()[0].value;
+        let resposta03 = document.getElementsByClassName("resposta-3").valueOf()[0].value;
+        let resposta04 = document.getElementsByClassName("resposta-4").valueOf()[0].value;
+        let resposta05 = document.getElementsByClassName("resposta-5").valueOf()[0].value;
+
+        if (resposta01 == "9") {
+          respostaCorreta01[0].style = "display: flex";
+        } else if (resposta01 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta01[0].style = "display: flex"
+        }
+
+        if (resposta02.toLowerCase() == "emonjos") {
+          respostaCorreta02[0].style = "display: flex";
+        } else if (resposta02 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta02[0].style = "display: flex"
+        }
+
+        if (resposta03 == "24") {
+          respostaCorreta03[0].style = "display: flex";
+        } else if (resposta03 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta03[0].style = "display: flex"
+        }
+
+        if (resposta04 == "25") {
+          respostaCorreta04[0].style = "display: flex";
+        } else if (resposta04 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta04[0].style = "display: flex"
+        }
+
+        if (resposta05.toLowerCase() == "capitão sunga") {
+          respostaCorreta05[0].style = "display: flex";
+        } else if (resposta05 == "") {
+          // Não faz nada
+        } else {
+          respostaIncorreta05[0].style = "display: flex"
+        }
+
+      };
+
+      btn?.addEventListener("click", verificarRespostas);
+    </script>
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+      <!--begin::App Main-->
+      <main class="app-main">
+        <section id="conhecendo-graficos">
+          <h2>Resolvendo situações problemas com o apoio de tabelas.</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_06/conteudo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            As tabelas são frequentemente utilizadas como organizadoras de dados. Elas fornecem uma maneira eficaz de apresentar informações de forma estruturada e organizada, facilitando a compreensão e a análise dos dados.
+          </p>
+          <p>
+            As tabelas são compostas por linhas e colunas, onde cada célula contém um valor ou uma categoria específica de dados. Elas podem ser usadas para organizar uma variedade de tipos de dados, como números, datas, nomes, descrições e muito mais.
+          </p>
+          <p>
+            Em resumo, as tabelas são ferramentas poderosas para organizar e apresentar dados de forma clara e organizada, facilitando a interpretação e a análise das informações. Elas são amplamente utilizadas em uma variedade de campos, desde negócios e finanças até ciência e pesquisa, como uma maneira eficaz de organizar e visualizar dados.
+          </p>
+        </section>
+
+        <hr>
+        <section id="objetivo">
+          <h2>OBJETIVO</h2>
+          <audio controls="controls">
+            <source src={"/src/html/pages/aulas/audios/aula_06/objetivo.mp3"} />
+            seu navegador não suporta HTML5
+          </audio>
+          <p>
+            Objetivo da aula de hoje é fazer com que você consiga resolver situações-problemas a partir de informações apresentadas por tabelas ou organizar dados a partir de uma lista.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="exercicios">
+            <h2>EXERCÍCIOS</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_06/exercicio_enunciado.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <ol>
+              <li>
+                <div>
+                  <p>
+                    Para mudar a dinâmica das aulas,uma professora pediu para que seus alunos voltassem em três filmes para a sala ver no cinema. Vamos imaginar essa representação em uma tabela de duas colunas. A primeira coluna tem os filmes em cartaz, a segunda o número de votos. Pra o filme um emonjos se teve doze votos,para o filme dois o capitão sunga teve quatro votos e o filme três os ninjas divertidos teve oito votos. Com base nisso,responda:
+                  </p>
+                </div>
+                <div>
+                  <img
+                    style="width: 100%;"
+                    src={path + "/assets/img/ex_01_aula_06.png"}
+                    alt="User Avatar"
+                  />
+                </div>
+                <div>
+                  <ol class="lists">
+                    <li>
+                      <p>
+                        Do que trata a tabela?
+                      </p>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_01.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Quantos votos o segundo lugar precisa para ganhar?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-1" type="text">
+                      <br>
+                      <p class="resposta-correta-01 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-01 resposta-incorreta">Resposta incorreta, a resposta correta é 9!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_02.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Quem foi o vencedor?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-2" type="text">
+                      <br>
+                      <p class="resposta-correta-02 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-02 resposta-incorreta">Resposta incorreta, a resposta certa é Emonjos!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_03.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Quantas crianças participaram da escolha?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-3" type="text">
+                      <br>
+                      <p class="resposta-correta-03 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-03 resposta-incorreta">Resposta incorreta, a resposta certa é 24!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_04.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Quantos ingresso a professora terá que comprar para todos verem o filme ganhador ?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-4" type="text">
+                      <br>
+                      <p class="resposta-correta-04 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-04 resposta-incorreta">Resposta incorreta, a resposta certa é 25!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_05.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                    <li>
+                      <p>
+                        Se não tiver mais o filme ganhador,qual filme será escolhido ?
+                      </p>
+                      <label>Insira a sua resposta: </label>
+                      <input class="resposta-5" type="text">
+                      <br>
+                      <p class="resposta-correta-05 resposta-correta">Resposta correta!</p>
+                      <p class="resposta-incorreta-05 resposta-incorreta">Resposta incorreta, a resposta certa é "capitão sunga"!</p>
+                      <br>
+                      <audio controls="controls">
+                        <source src={"/src/html/pages/aulas/audios/aula_06/exec_06.mp3"} />
+                        seu navegador não suporta HTML5
+                      </audio>
+                      <br>
+                    </li>
+                  </ol>
+                  <br>
+                  <button
+                    id="botao-resposta"
+                    style="text-align: center;"
+                    type="button"
+                    onclick=
+                  >
+                    Verificar respostas
+                  </button>
+                </div>
+              </li>
+            </ol>
+
+        </section>
+
+        <hr>
+
+        <section id="encerramento">
+            <h2>ENCERRAMENTO</h2>
+            <audio controls="controls">
+              <source src={"/src/html/pages/aulas/audios/aula_06/encerramento.mp3"} />
+              seu navegador não suporta HTML5
+            </audio>
+            <p>
+              Ao explorarmos o papel das tabelas como organizadoras de dados, fica evidente sua importância fundamental em diversos contextos. As tabelas fornecem uma estrutura clara e organizada para apresentar informações, tornando-as acessíveis e compreensíveis para quem as utiliza.
+            </p>
+            <p>
+              Em um mundo onde somos constantemente bombardeados por uma grande quantidade de informações, as tabelas desempenham um papel crucial na simplificação e na organização desses dados. Elas nos permitem agrupar e categorizar informações de forma lógica, facilitando a análise e a interpretação dos dados apresentados.
+            </p>
+            <p>
+              Nem sempre a solução de uma situação de uma tabela,refere-se apenas à observação dos dados.As vezes precisamos relacionar as informações e fazer operações para resolver um problema.
+            </p>
+            <p>
+              Portanto, ao reconhecermos a importância das tabelas na organização de dados, podemos aproveitar ao máximo essa ferramenta valiosa para tomar decisões informadas, comunicar informações de forma eficaz e impulsionar a compreensão e o progresso em nossas diversas áreas de atuação.
+            </p>
+        </section>
+      </main>
+      <!--end::App Main-->
+      <Footer />
+    </div>
+    <!--end::App Wrapper-->
+    <!--begin::Script-->
+    <Scripts path={path} />
+  </body><!--end::Body-->
+</html>
